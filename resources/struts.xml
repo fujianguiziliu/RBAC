@@ -5,9 +5,20 @@
 
 <struts>
 	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.ui.theme" value="simple"/>
+	
  	<package name="pssPkg" extends="struts-default" namespace="/">
  	<!-- 直接从spring容器中获取对应的Aaction实例 -->
- 		<action name="dept" class="deptAction">
+ 		<action name="*_*" class="{1}Action" method="{2}">
+ 			<result name="list">
+ 				/WEB-INF/views/{1}/list.jsp
+ 			</result>
+ 			<result type="redirectAction">
+ 				{1}
+ 			</result>
+ 			<result name="input">
+ 				/WEB-INF/views/{1}/input.jsp
+ 			</result>
  		</action>
  	</package>
  	

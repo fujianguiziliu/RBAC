@@ -5,6 +5,15 @@
    <configuration>
   	<!--和mybatis框架自身的设置  -->
   	<!-- <settings></settings> -->
-  
+  <settings>
+  	 	<!-- 开启延迟加载 -->
+   		<setting name="lazyLoadingEnabled" value="true"/>
+   		<!-- 禁止访问主对象中的所有的属性都会去接触发延迟加载-->
+   		<setting name="aggressiveLazyLoading" value="false"/>
+   		<!-- 指定哪些object中的方法可以触发延迟加载 -->
+   		 <setting name="lazyLoadTriggerMethods" value="clone"/>
+   		
+   		
+   	</settings>
    
    </configuration>
