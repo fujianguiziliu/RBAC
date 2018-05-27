@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.xmg.pss.domain.Department;
 import com.xmg.pss.service.IDepartmentService;
+import com.xmg.pss.util.RequiredPermission;
 
 public class DepartmentAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
@@ -19,7 +20,7 @@ public class DepartmentAction extends BaseAction {
 	
 	@Setter
 	private IDepartmentService deptService;
-	@Override
+	@RequiredPermission("部门列表")
 	public String execute() throws Exception {
 		List<Department> list = deptService.list();
 		//将数据添加到值栈中
@@ -27,6 +28,7 @@ public class DepartmentAction extends BaseAction {
 		return LIST;
 		
 	}
+	@RequiredPermission("部门删除")
 	public String delete() throws Exception {
 		if (dept.getId()!=null) {
 			deptService.delete(dept.getId());
@@ -35,7 +37,7 @@ public class DepartmentAction extends BaseAction {
 		
 		
 	}
-	
+	@RequiredPermission("部门编辑")
 	public String input() throws Exception {
 		if (dept.getId()!=null) {
 			dept=deptService.get(dept.getId());
@@ -44,7 +46,7 @@ public class DepartmentAction extends BaseAction {
 		
 		
 	}
-	
+	@RequiredPermission("部门保存或更新")
 	public String saveOrUpdate() throws Exception {
 		if (dept.getId()!=null) {
 			deptService.update(dept);

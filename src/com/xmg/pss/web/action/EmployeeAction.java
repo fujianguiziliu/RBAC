@@ -14,6 +14,7 @@ import com.xmg.pss.page.PageResult;
 import com.xmg.pss.query.EmployeeQueryObject;
 import com.xmg.pss.service.IDepartmentService;
 import com.xmg.pss.service.IEmployeeService;
+import com.xmg.pss.util.RequiredPermission;
 
 public class EmployeeAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +30,7 @@ public class EmployeeAction extends BaseAction {
 	private String repassword;
 	@Getter
 	private EmployeeQueryObject qo=new EmployeeQueryObject();
-	@Override
+	@RequiredPermission("员工列表")
 	public String execute() throws Exception {
 		PageResult result= empService.pageQuery(qo);
 		//将数据添加到值栈中
@@ -40,6 +41,7 @@ public class EmployeeAction extends BaseAction {
 		return LIST;
 		
 	}
+	@RequiredPermission("员工删除")
 	public String delete() throws Exception {
 		if (e.getId()!=null) {
 			empService.delete(e.getId());
@@ -48,7 +50,7 @@ public class EmployeeAction extends BaseAction {
 		
 		
 	}
-	
+	@RequiredPermission("员工编辑")
 	public String input() throws Exception {
 		//将页面上的需要的部门的信息全部查询出来
 				List<Department> depts = deptService.list();
@@ -60,7 +62,7 @@ public class EmployeeAction extends BaseAction {
 		
 		
 	}
-	
+	@RequiredPermission("员工保存或更新")
 	public String saveOrUpdate() throws Exception {
 		
 		if (e.getId()!=null) {
