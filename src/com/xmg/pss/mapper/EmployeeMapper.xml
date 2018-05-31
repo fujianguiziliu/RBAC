@@ -16,9 +16,10 @@
 	<result property="id" column="did" />
 	<result property="name" column="dname" />
 	<result property="sn" column="dsn" />
-
-	
 	</association>
+	<collection property="roles" ofType="Role" select="com.xmg.pss.mapper.RoleMapper.getByEmpId" column="id">
+		
+	</collection>	
 	</resultMap>
 
 	<insert id="save" useGeneratedKeys="true" 
@@ -118,4 +119,14 @@
 	 	<include refid="condition_sql"></include>
 	 </select>
 	 
+	 <insert id="updateRelation">
+	 	insert into employee_role values(#{eid},#{rid})
+	 </insert>
+	 
+	 <delete id="deleteRelation">
+	 	delete from employee_role where employee_id=#{eid}
+	 </delete>
+	 <select id="checkLogin" resultMap="base_mapping">
+	 	select * from employee where name=#{username} and password=#{password}
+	 </select>
 </mapper>

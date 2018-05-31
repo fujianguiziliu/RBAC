@@ -2,6 +2,8 @@ package com.xmg.pss.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.xmg.pss.domain.Department;
 import com.xmg.pss.domain.Employee;
 import com.xmg.pss.page.PageResult;
@@ -21,4 +23,6 @@ public interface IEmployeeService {
 	List<Employee> list();
 	
 	PageResult pageQuery(QueryObject qo);
+
+	Employee checkLogin(String username, String password);
 }

@@ -1,5 +1,10 @@
 package com.xmg.pss.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.fabric.xmlrpc.base.Array;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +19,8 @@ public class Employee extends BaseDomain{
 	private Boolean admin;
 	//多对一的关系
 	private Department dept;
+	
+	private List<Role> roles=new ArrayList<>();
 	@Override
 	public String toString() {
 		return "Employee [name=" + name + ", password="

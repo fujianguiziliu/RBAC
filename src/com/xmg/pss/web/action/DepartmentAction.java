@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.xmg.pss.domain.Department;
+import com.xmg.pss.page.PageResult;
 import com.xmg.pss.service.IDepartmentService;
 import com.xmg.pss.util.RequiredPermission;
 
@@ -56,6 +57,13 @@ public class DepartmentAction extends BaseAction {
 		return SUCCESS;
 		
 		
+	}
+	public String list() throws Exception {
+		List<Department> list = deptService.list();
+		//将数据添加到值栈中
+		ActionContext.getContext().put("list", list);
+		return LIST;
+		//将页面上的需要的部门的信息全部查询出来
 	}
 	
 	

@@ -72,7 +72,7 @@
 						<s:checkbox name="e.admin" cssClass="ui_checkbox01"/>
 					</td>
 				</tr>
-				<%-- <tr>
+				 <tr>
 					<td class="ui_text_rt" width="140">角色</td>
 					<td class="ui_text_lt">
 						<table>
@@ -87,12 +87,12 @@
 									<input type="button" id="deselectAll" value="<==" class="left2right"/>
 								</td>
 								<td>
-									<s:select list="employee.roles" name="employee.roles.id" listKey="id" listValue="name" multiple="true" cssClass="ui_multiselect01 selected_roles"/>
+									<s:select list="e.roles" name="e.roles.id" listKey="id" listValue="name" multiple="true" cssClass="ui_multiselect01 selected_roles"/>
 								</td>
 							</tr>
 						</table>
 					</td>
-				</tr> --%>
+				</tr> 
 				<tr>
 					<td>&nbsp;</td>
 					<td class="ui_text_lt">
