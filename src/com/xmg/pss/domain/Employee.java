@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Employee extends BaseDomain{
+public class Employee extends BasicDomain{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String password;
